@@ -1,5 +1,4 @@
-jok=12
-joston=12
-print(joston,jok)
-jost=12
-ptint(jost)
+a=12
+b=23
+sum=a+b
+print(sum)
