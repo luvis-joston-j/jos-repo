@@ -1,3 +1,4 @@
-print("asshole")
-print("he is an assole")
-print("abc")
+a=12
+b=23
+sub=a-b
+print(sub)
