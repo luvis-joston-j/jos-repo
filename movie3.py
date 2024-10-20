@@ -1,1 +1,1 @@
-print("my lofe is bitch")
+print("my life is bitch")
