@@ -1,1 +1,1 @@
-print("sk is a good ass freind")
+print("i love to be ignored and i don't deserved to be loved")
