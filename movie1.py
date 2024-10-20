@@ -1,1 +1,2 @@
 print("asshole")
+print("motherfucker")
