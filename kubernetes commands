@@ -1,0 +1,5 @@
+kubectl get nodes
+kubectl get pods
+kubectl run pod1<pod name> --name nginx
+kubectl get pods -o wide
+kubectl describe pod <pod name> | less
