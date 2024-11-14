@@ -5,4 +5,12 @@ kubectl run pod1<pod name> --name nginx
 kubectl get pods -o wide
 kubectl describe pod <pod name> | less
 kubectl delete pod <pod name>
-"vi pod-defintion.yml"
+kubectl create -f <yml file name>
+kubectl get endpoints
+kubectl exec -it test-pod -- bash
+kubeclt create -f pod-defintion.yml
+kubectl create -f test-pod.yml
+kubectl create -f service.yml
+kubectl get svc
+
+
