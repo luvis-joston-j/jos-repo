@@ -1,0 +1,34 @@
+docker search httpd
+docker pull httpd
+docker images
+du -sh
+docker run -it --name jos httpd 
+docker stop <container name>
+docker start <container name>
+docker attach <conatainer name>
+docker kill <docker kill>
+docker ps 
+docker ps -a
+sudo service docker start
+sudo service docker status
+systemctl start docker
+docker -v
+docker version
+docker info
+docker run hello-world
+docker rmi <image name or image id>
+docker rmi -f <image name or image id>
+docker run mysql
+docker rename <old name> <new name>
+dokcer tag <old name> <new name>
+docker exec -it <containername> /bin/bash/
+ctrl+d
+yum list installed
+docker rm <container name>
+docker container prune "to delete all the stopped conainers"
+system docker prune -a 
+docker run -it --name jos ubuntu
+dokcer commit <conatiner name> <give the custom image name>
+docker commit nginx jos "creatina custom container using existing container"
+docker run -it --name jos jos
+
