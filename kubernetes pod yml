@@ -1,0 +1,21 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: jos
+  labels:
+    luv: jos
+spec:
+  containers:
+    - name: c1
+      image: httpd
+
+apiVersion: v1
+kind: Pod
+metadata:
+ name: pod1
+ labels:
+  app: webserver
+spec:
+ containers:
+  - name: c1
+    image: nginx
