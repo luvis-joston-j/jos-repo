@@ -1,5 +1,8 @@
+"pods are ensure that container are always running"
 kubectl get nodes
 kubectl get pods
 kubectl run pod1<pod name> --name nginx
 kubectl get pods -o wide
 kubectl describe pod <pod name> | less
+kubectl delete pod <pod name>
+"vi pod-defintion.yml"
