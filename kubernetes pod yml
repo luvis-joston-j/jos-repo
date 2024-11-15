@@ -8,7 +8,7 @@ spec:
   containers:
     - name: c1
       image: httpd
-
+#####################################################################
 apiVersion: v1
 kind: Pod
 metadata:
@@ -19,7 +19,7 @@ spec:
  containers:
   - name: c1
     image: nginx
-
+############################################################
 apiVersion: v1
 kind: Service
 metadata: 
@@ -31,9 +31,9 @@ spec:
  ports:
  - targetPort: 80 
    port: 80
-
+##############################################################
 # vim test-pod.yml
-
+####################################################################
 kind: Pod
 apiVersion: v1
 metadata:
@@ -43,7 +43,7 @@ spec:
   - name: c1
     image: ubuntu
     command: ["bash", "-c", "sleep 6000"]
-
+##############################################################
 kind: Pod
 apiVersion: v1
 metadata:
@@ -55,7 +55,7 @@ spec:
   containers:
     - name: c1
       image: nginx
-
+#####################################################
 # service
 kind: Service
 apiVersion: v1
@@ -69,5 +69,40 @@ spec:
       nodePort: 31234
   selector:
     luv: jos
+#########################################
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-pod
+spec:
+  containers:
+  - name: my-container
+    image: nginx
+    volumeMounts:
+    - mountPath: /usr/share/nginx/html
+      name: my-volume
+  volumes:
+  - name: my-volume
+    hostPath:
+      path: /data
+      type: Directory
 
-
+###############################################################
+kind: ReplicaSet
+apiVersion: app/v1
+metadata:
+  name: jok
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      jos: jos
+  template:
+    metadata:
+      labels:
+        jos: jos
+    spec:
+      containers:
+        - name: c1
+          image: nginx
+############################################################################################################
