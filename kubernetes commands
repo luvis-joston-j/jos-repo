@@ -12,5 +12,9 @@ kubeclt create -f pod-defintion.yml
 kubectl create -f test-pod.yml
 kubectl create -f service.yml
 kubectl get svc
-
+"every container is runnig micro service"
+"service is a networking layer that allow communication between two pods"
+"cluster poets should be 30000 to 32767"
+kubectl delete all --all
+"expose it to the internet means node port"
 
