@@ -17,4 +17,13 @@ kubectl get svc
 "cluster poets should be 30000 to 32767"
 kubectl delete all --all
 "expose it to the internet means node port"
+kubectl get service
+kubectl get all
+kubectl get pods -l jos=jos
+ kubectl scale replicaset jok --replicas 6
+kubectl get replicaSet -o wide
+kubectl get replicaSet
+ kubectl scale replicaset jok --replicas 12
+
+
 
