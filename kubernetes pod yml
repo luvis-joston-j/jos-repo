@@ -44,4 +44,30 @@ spec:
     image: ubuntu
     command: ["bash", "-c", "sleep 6000"]
 
+kind: Pod
+apiVersion: v1
+metadata:
+  name: pod1
+  labels:
+    luv: jos
+    chri: sti
+spec:
+  containers:
+    - name: c1
+      image: nginx
+
+# service
+kind: Service
+apiVersion: v1
+metadata:
+  name: mysvc2
+spec:
+  type: NodePort
+  ports:
+    - targetPort: 80
+      port: 80
+      nodePort: 31234
+  selector:
+    luv: jos
+
 
