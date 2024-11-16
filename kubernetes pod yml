@@ -137,3 +137,36 @@ spec:
   selector:
     jos: luv
 ###########################################################################################################
+kind: Service
+apiVersion: v1
+metadata:
+  name: luv
+spec:
+  type: NodePort
+  selector:
+    jos: luv
+  ports:
+    - targetPort: 8080
+      port: 80
+######################################################################################################
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: jos
+spec:
+  replicas: 3
+  selector:
+   matchLabels:
+     jos: luv
+  template:
+    metadata:
+      name: luv
+      labels:
+        jos: luv
+    spec:
+      containers:
+        - name: c1
+          image: tomcat
+          ports:
+            - containerPort: 8080
+#######################################################################################################
