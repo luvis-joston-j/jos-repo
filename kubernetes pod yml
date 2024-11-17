@@ -170,3 +170,29 @@ spec:
           ports:
             - containerPort: 8080
 #######################################################################################################
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: jos
+spec:
+  replicas: 4
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 2
+      maxUnavailable: 2
+  selector:
+    matchLabels:
+      luv: jos
+  template:
+    metadata:
+        labels:
+          luv: jos
+    spec:
+      containers:
+      - name: c2
+        image: luvisjostonj/tom:latest
+        ports:
+          - containerPort: 8080
+#######################################################################################################
+
