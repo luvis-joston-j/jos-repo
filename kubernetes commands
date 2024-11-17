@@ -24,6 +24,10 @@ kubectl scale replicaset jok --replicas 6
 kubectl get replicaSet -o wide
 kubectl get replicaSet
 kubectl scale replicaset jok --replicas 12
+"deploment>>>replicaset>>>pods of image>>>container"
+kubectl set image deployment jos c2=v1
+kubectl rollout undo deployment jos
+
 
 
 
