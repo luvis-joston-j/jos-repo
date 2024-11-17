@@ -31,4 +31,12 @@ docker run -it --name jos ubuntu
 dokcer commit <conatiner name> <give the custom image name>
 docker commit nginx jos "creatina custom container using existing container"
 docker run -it --name jos jos
+docker service create --name mysvc --replicas 2 -p 8989:3000 sonal04/samplepyapp:v1
+docker service rm mysvc
+docker service scale mysvc=2
+ocker service scale mysvc=7
+docker rm -f conatinerid
+docker service ps mysvc
+docker service ls
+docker service create --name mysvc --replicas 6 nginx
 
