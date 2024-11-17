@@ -27,6 +27,7 @@ kubectl scale replicaset jok --replicas 12
 "deploment>>>replicaset>>>pods of image>>>container"
 kubectl set image deployment jos c2=v1
 kubectl rollout undo deployment jos
+while true;do curl http://54.158.16.47:32672/;sleep 1;echo " ";done
 
 
 
