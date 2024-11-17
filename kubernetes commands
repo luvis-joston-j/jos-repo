@@ -20,10 +20,10 @@ kubectl delete all --all
 kubectl get service
 kubectl get all
 kubectl get pods -l jos=jos
- kubectl scale replicaset jok --replicas 6
+kubectl scale replicaset jok --replicas 6
 kubectl get replicaSet -o wide
 kubectl get replicaSet
- kubectl scale replicaset jok --replicas 12
+kubectl scale replicaset jok --replicas 12
 
 
 
