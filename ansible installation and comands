@@ -10,15 +10,9 @@ ssh-copy-id -i ansiuser@<public ip>
 ansible -i /home/ansiuser/myin jos -m ping
 ansible -m ping jos
 ssh ansiuser@18.206.226.176
-                                                                                                           Modules:
-                                                                                           ping
-                                                                                           command
-                                                                                           copy
-                                                                                           file
-                                                                                           debug
-                                                                                           service
-                                                                                           package
-                                                                                           Ansible playbook -> consist of plays
-                                                                                           each play consist of Host and tasks
-                                                                                            Register
-                                                                                            become plugin
+ansible my -m ping
+"<user> ALL:NOPASSWD: ALL"                                                                                              
+"sudo visudo"
+" vi /etc/sudoers"
+vi ansible.cfg>>>>>>>>>>>>>:[defaults]>inventory = /home/<user>/<inventory file name>
+vi myinventory or /etc/ansible >>>>>>> [<group name>] ip@worker>>> we always give private cuz private is presistent
