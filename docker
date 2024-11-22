@@ -39,4 +39,5 @@ docker rm -f conatinerid
 docker service ps mysvc
 docker service ls
 docker service create --name mysvc --replicas 6 nginx
+docker build -t <image name> .
 
