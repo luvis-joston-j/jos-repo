@@ -8,3 +8,4 @@ https://docs.ansible.com/ansible/latest/installation_guide/installation_distros.
 #####################################################################################################################################
 ssh-copy-id -i ansiuser@<public ip>
 ansible -i /home/ansiuser/myin jos -m ping
+ansible -m ping jos
