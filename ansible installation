@@ -5,3 +5,4 @@ sudo apt-get install -y ansible
 apt install ansible-core
 "Install ansible on other OS :"
 https://docs.ansible.com/ansible/latest/installation_guide/installation_distros.html#installing-ansible-on-ubuntu
+ssh-copy-id -i ansiuser@<public ip>
