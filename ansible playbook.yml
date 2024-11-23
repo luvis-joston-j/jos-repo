@@ -82,4 +82,18 @@ ansible-playbook playbook.yml
     - name: sevice to start
       service: name=apache2 state=restarted
   ******************************************************************************************************
-
+- name: deploy
+  hosts: my
+  become: true
+  tasks:
+    - name: install on package on server
+      package: name=apache2 state=present
+    - name: sevice to start
+      service: name=apache2 state=started
+    - name: Deploy
+      copy: src=index.html dest=/var/www/html
+      notify: sevice to start
+  handlers:
+    - name: sevice to start
+      service: name=apache2 state=restarte
+**********************************************************************************************************************************
