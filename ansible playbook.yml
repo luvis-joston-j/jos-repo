@@ -20,3 +20,4 @@ structure
       debug: msg="hello"
   ansible-playbook playbook.yml --syntax-check "to check correct or not"
 interpreter_python = auto_silent
+ansible-playbook playbook.yml
