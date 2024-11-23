@@ -12,3 +12,10 @@ structure
      ModuleName: parameters1= val par2=val
   - name: give task 2 name
     ModuleName: parameter=val par2=val
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+- name: Debug module of Ansible
+  hosts: my
+  tasks:
+    - name: Print a message on the controller
+      debug: msg="hello"
+  ansible-playbook playbook.yml --syntax-check "to check correct or not"
