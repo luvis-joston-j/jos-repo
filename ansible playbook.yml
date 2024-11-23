@@ -18,7 +18,7 @@ structure
   tasks:
     - name: Print a message on the controller
       debug: msg="hello"
-  #########################################################################################################################################3
+  *********************************************************************************************************
 ansible-playbook playbook.yml --syntax-check "to check correct or not"
 interpreter_python = auto_silent
 ansible-playbook playbook.yml
@@ -35,7 +35,7 @@ ansible-playbook playbook.yml
     - name: execute a command on the worker nodes
       command: hostname -s
       register: command_output
-  ##########################################################################################################################
+  ****************************************************************************************************************************
 - name: execute a command
   hosts: my
   tasks:
@@ -52,7 +52,7 @@ ansible-playbook playbook.yml
       command: apt update
     - name: install web ser
       package: name=apache2 state=present
-  #############################################################################################################################
+  ***************************************************************************************************************
 - name: apache2
   hosts: my
   become: true
@@ -68,6 +68,18 @@ ansible-playbook playbook.yml
       package: name=apache2 state=present
       become: true
       become_user: root
-###################################$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-
+*********************************************************************************************************
+- name: deploy
+  hosts: my
+  become: true
+  tasks:
+    - name: install on package on server
+      package: name=apache2 state=present
+    - name: sevice to start
+      service: name=apache2 state=started
+    - name: Deploy
+      copy: src=index.html dest=/var/www/html
+    - name: sevice to start
+      service: name=apache2 state=restarted
+  ******************************************************************************************************
 
