@@ -16,3 +16,12 @@ ansible my -m ping
 " vi /etc/sudoers"
 vi ansible.cfg>>>>>>>>>>>>>:[defaults]>inventory = /home/<user>/<inventory file name>
 vi myinventory or /etc/ansible >>>>>>> [<group name>] ip@worker>>> we always give private cuz private is presistent
+"ad hoc commads"
+ansible my -m command -a "uptime"
+ansible my -m command -a "uptime" -vv
+ansible my -m command -a "df -h" -vv
+ansible my -m command -a "df -h" -vvv
+ansible my -m file -a "path=/tmp/mydemo state=directory"
+ansible my -m command -a "ls /tmp"
+ansible my -m file -a "path=/tmp/mydemo/inex.html state=touch"
+ansible my -m command -a "ls /tmp/mydemo"
