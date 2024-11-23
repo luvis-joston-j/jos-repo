@@ -18,6 +18,54 @@ structure
   tasks:
     - name: Print a message on the controller
       debug: msg="hello"
-  ansible-playbook playbook.yml --syntax-check "to check correct or not"
+  #########################################################################################################################################3
+ansible-playbook playbook.yml --syntax-check "to check correct or not"
 interpreter_python = auto_silent
 ansible-playbook playbook.yml
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+- name: execute a command
+  hosts: my
+  tasks:
+    - name: execute a command on the worker nodes
+      command: hostname -s
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  - name: execute a command
+  hosts: my
+  tasks:
+    - name: execute a command on the worker nodes
+      command: hostname -s
+      register: command_output
+  ##########################################################################################################################
+- name: execute a command
+  hosts: my
+  tasks:
+    - name: execute a command on the worker nodes
+      command: hostname -s
+      register: command_output
+    - name: print
+      debug: var=command_output
+  ***************************************************************************************************************************
+- name: apache2
+  hosts: my
+  tasks:
+    - name: update
+      command: apt update
+    - name: install web ser
+      package: name=apache2 state=present
+  #############################################################################################################################
+- name: apache2
+  hosts: my
+  become: true
+  become_user: root
+  tasks:
+    - name: update
+      command: apt update
+    - name: install maven
+      package: name=maven state=present
+    - name: install git
+      package: name=git state=present
+    - name: install apache2
+      package: name=apache2 state=present
+      become: true
+      become_user: root
+###################################$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
