@@ -97,3 +97,16 @@ ansible-playbook playbook.yml
     - name: sevice to start
       service: name=apache2 state=restarted
 **********************************************************************************************************************************
+- name: aaaa
+  hosts: my
+  become: true
+  tasks:
+    - name: update
+      command: apt update
+    - name: install java
+      package: name=openjdk-8-jdk state=present
+    - name: install maven
+      package: name=maven state=present
+    - name: git
+      ansible.builtin.git:  repo=https://github.com/luvis-joston-j/Balenci.git dest=/home/jos/balenci
+********************************************************************************************************************************************
