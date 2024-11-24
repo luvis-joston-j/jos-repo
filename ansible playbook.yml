@@ -95,5 +95,5 @@ ansible-playbook playbook.yml
       notify: sevice to start
   handlers:
     - name: sevice to start
-      service: name=apache2 state=restarte
+      service: name=apache2 state=restarted
 **********************************************************************************************************************************
