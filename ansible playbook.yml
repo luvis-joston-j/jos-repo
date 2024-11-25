@@ -134,4 +134,25 @@ ansible-playbook playbook.yml
       - name: restart
         service: name={{pk}} state=restarted
   **************************************************************************************************************************************
+  - name: tomcat install
+  hosts: my
+  become: true
+  tasks:
+    - name: update
+      command: apt update
+    - name: un
+      package: name=nginx state=absent
+    - name: jdk
+      package: name=openjdk-17-jdk state=present
+    - name: maven
+      package: name=maven state=present
+    - name: docker
+      package: name=docker.io  state=present
+    - name: docker sv
+      service: name=docker state=started
+    - name: docker pull
+      command: docker pull luvisjostonj/lv
+    - name: docker co
+      command: docker run -d -p 1234:3000 luvisjostonj/lv
+**********************************************************************************************************************************
   
