@@ -155,4 +155,26 @@ ansible-playbook playbook.yml
     - name: docker co
       command: docker run -d -p 1234:3000 luvisjostonj/lv
 **********************************************************************************************************************************
+- name: my play to do assignment 1
+  hosts: my
+  become: true
+  vars:
+  tasks:
+   - name: install java
+     package: name=openjdk-21-jdk state=absent
+   - name: install java
+     package: name=openjdk-17-jdk state=absent
+   - name: install java
+     package: name=openjdk-8-jdk state=absent
+   - name: install maven
+     package: name=maven state=present
+  #- name: git clone
+  #  ansible.builtin.git: repo=https://github.com/luvis-joston-j/Balenci.git dest=/home/jos/Ba
+   - name: build
+     command: mvn clean package -e chdir=/home/jos/Ba
+   - name: install tomcat
+     command: wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.97/bin/apache-tomcat-9.0.97.tar.gz
+   - name: unzip
+     command: tar -xvf apache-tomcat-9.0.97.tar.gz
+******************************************************************************************************************************
   
