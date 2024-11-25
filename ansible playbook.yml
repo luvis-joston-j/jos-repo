@@ -110,3 +110,28 @@ ansible-playbook playbook.yml
     - name: git
       ansible.builtin.git:  repo=https://github.com/luvis-joston-j/Balenci.git dest=/home/jos/balenci
 ********************************************************************************************************************************************
+- name: install nginx
+  hosts: my
+  become: true
+  become_user: root
+  vars:
+    pk: nginx
+    pp: apache2
+    path: /var/www/html
+  tasks:
+    - name: uninstall {{pp}}
+      package: name=apache2 state=absent
+    - name: uninstall {{ pk }}
+      package: name={{ pk }} state=absent
+    - name: install {{ pk }}
+      package: name={{ pk }} state=latest
+    - name: start
+      service: name={{pk}} state=started
+    - name: Deploy
+      copy: src=index.html dest={{path}}
+      notify: restart
+  handlers:
+      - name: restart
+        service: name={{pk}} state=restarted
+  **************************************************************************************************************************************
+  
