@@ -25,3 +25,5 @@ ansible my -m file -a "path=/tmp/mydemo state=directory"
 ansible my -m command -a "ls /tmp"
 ansible my -m file -a "path=/tmp/mydemo/inex.html state=touch"
 ansible my -m command -a "ls /tmp/mydemo"
+ansible-galaxy init nginx
+
