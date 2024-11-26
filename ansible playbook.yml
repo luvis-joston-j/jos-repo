@@ -205,3 +205,30 @@ ansible-playbook playbook.yml
    - name: docker container with port mapping and volume
      command: docker run -d -v {{d_p}}/target:{{tom_path}} -p 2245:8080 tomcat
   *********************************************************************************************************************************************
+- name: my play to do assignment 1
+  hosts: myinventory
+  become: true
+  vars:
+    d_p: /home/joston/hostsar #destination path 
+    tom_path: /usr/local/tomcat/webapps # tomcat server root path
+  tasks:
+   - name: update
+     command: apt-get update
+   - name: java
+     package: name=openjdk-8-jdk state=present #java installation
+   - name: maven
+     package: name=maven state=present #mavne installation
+   - name: git
+     package: name=git state=present #git installation
+   - name: git clone #cloning a web app repo
+     ansible.builtin.git: repo=https://github.com/luvis-joston-j/HOTSTAR.git dest={{d_p}}
+   - name: mvn build # building an artifact
+     command: mvn clean package chdir={{d_p}}
+   - name: docker #im going to use docker because it would be more easier to build tomcat server to deploy my java web app
+     package: name=docker.io state=present
+   - name: docker service
+     service: name=docker state=started
+   - name: docker pull tomcat #pulling tomcat image cuz java based apps are hosted on tomcat server
+     command: docker pull tomcat
+   - name: docker container with port mapping and volume
+     command: docker run -d -v {{d_p}}/target:{{tom_path}} -p 1234:8080 tomcat
