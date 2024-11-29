@@ -83,3 +83,36 @@ resource "aws_security_group" "assign1"{
       }
 }
 #################################################################################################
+provider "aws" {
+  region = var.region
+  access_key = var.access_key
+  secret_key = var.secret_key
+}
+
+resource "aws_vpc" "ma" {
+  cidr_block = "10.0.0.0/16"
+}
+
+resource "aws_subnet" "sub-1" {
+  depends_on = [aws_vpc.ma]
+  vpc_id     = aws_vpc.ma.id
+  cidr_block = "10.0.1.0/24"
+  map_public_ip_on_launch = true
+  tags = {
+    Name = "sub-1"
+  }
+}
+
+resource "aws_route_table" "example" {
+  vpc_id = aws_vpc.ma.id
+    tags = {
+    Name = "example"
+  }
+}
+
+resource "aws_route_table_association" "a" {
+  subnet_id      = aws_subnet.sub-1.id
+  route_table_id = aws_route_table.example.id
+}
+#####################################################################################################################
+
