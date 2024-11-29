@@ -3,3 +3,8 @@ echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/hashi
 sudo apt update && sudo apt install terraform
 #######################################################################################
 terraform init
+terraform plan
+terraform apply
+terraform apply --target resource.aws_instance.myubu
+terraform destroy --target resource.aws_instance.myubu
+terraform validate
