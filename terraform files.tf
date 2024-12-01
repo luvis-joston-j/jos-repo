@@ -420,3 +420,114 @@ resource "aws_instance" "luv" {
 }
 }
 #############################################################################################################################################
+provider "aws" {
+  region     = "us-east-1"
+  access_key = 
+  secret_key = 
+}
+resource "aws_vpc" "my_vpc" {
+  cidr_block = "10.0.0.0/16"
+  tags = {
+    Name = "joston_vpc"
+  }
+}
+
+# Create a public subnet
+resource "aws_subnet" "public_subnet" {
+  vpc_id                  = aws_vpc.my_vpc.id
+  cidr_block              = "10.0.1.0/24"
+  availability_zone       = "us-east-1a"  # Change to your desired AZ
+  map_public_ip_on_launch = true
+  tags = {
+    Name = "Public Subnet"
+  }
+}
+
+# Create a private subnet
+resource "aws_subnet" "private_subnet" {
+  vpc_id                  = aws_vpc.my_vpc.id
+  cidr_block              = "10.0.2.0/24"
+  availability_zone       = "us-east-1a"  # Change to your desired AZ
+  map_public_ip_on_launch = true
+  tags = {
+    Name = "Private Subnet"
+  }
+}
+
+# Create an Internet Gateway
+resource "aws_internet_gateway" "my_igw" {
+  vpc_id = aws_vpc.my_vpc.id
+}
+
+# Create a NAT Gateway EIP (Elastic IP)
+resource "aws_eip" "my_nat_eip" {
+  vpc = true
+}
+
+# Create a NAT Gateway in the public subnet
+resource "aws_nat_gateway" "my_nat_gateway" {
+  allocation_id = aws_eip.my_nat_eip.id
+  subnet_id     = aws_subnet.public_subnet.id
+  tags = {
+    Name = "my_nat_gateway"
+  }
+}
+
+# Create route tables for public and private subnets
+
+# Route table for the public subnet
+resource "aws_route_table" "public_route_table" {
+  vpc_id = aws_vpc.my_vpc.id
+
+  route {
+    cidr_block = "0.0.0.0/0"
+    gateway_id = aws_internet_gateway.my_igw.id
+  }
+
+  tags = {
+    Name = "Public Route Table"
+  }
+}
+
+# Associate public route table with public subnet
+resource "aws_route_table_association" "public_subnet_association" {
+  subnet_id      = aws_subnet.public_subnet.id
+  route_table_id = aws_route_table.public_route_table.id
+}
+
+# Route table for the private subnet
+resource "aws_route_table" "private_route_table" {
+  vpc_id = aws_vpc.my_vpc.id
+  route {
+    cidr_block = "0.0.0.0/0"
+    nat_gateway_id = aws_nat_gateway.my_nat_gateway.id
+  }
+
+  tags = {
+    Name = "Private Route Table"
+  }
+}
+
+# Associate private route table with private subnet
+resource "aws_route_table_association" "private_subnet_association" {
+  subnet_id      = aws_subnet.private_subnet.id
+  route_table_id = aws_route_table.private_route_table.id
+}
+resource "aws_instance" "luv" {
+  subnet_id = aws_subnet.private_subnet.id
+  ami           =  "ami-0453ec754f44f9a4a"
+  instance_type = "t2.micro"
+  key_name = "jos"
+  tags = {
+    Name = "myec2"
+  }
+}
+resource "aws_instance" "luv2" {
+  subnet_id = aws_subnet.public_subnet.id
+  ami           =  "ami-0453ec754f44f9a4a"
+  instance_type = "t2.micro"
+  key_name = "jos"
+  tags = {
+    Name = "myec2-1"
+  }
+}
