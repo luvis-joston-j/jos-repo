@@ -328,3 +328,95 @@ output "instance-id" {
  value = aws_instance.myec2.id
 }
 #############################################################################################################################
+provider "aws" {
+  region     = "us-east-1"
+  access_key = ""
+  secret_key = ""
+}
+resource "aws_vpc" "joston" {
+  cidr_block       = "10.0.0.0/16"
+  instance_tenancy = "default"
+
+  tags = {
+    Name = "joston"
+  }
+}
+
+resource "aws_subnet" "public" {
+  vpc_id            = aws_vpc.joston.id
+  cidr_block        = "10.0.1.0/24"
+  map_public_ip_on_launch = true
+}
+
+resource "aws_subnet" "private" {
+  vpc_id     = aws_vpc.joston.id
+  cidr_block = "10.0.2.0/24"
+}
+
+resource "aws_route_table" "jos1" {
+  vpc_id = aws_vpc.joston.id
+}
+resource "aws_route_table_association" "a" {
+  subnet_id      = aws_subnet.public.id
+  route_table_id = aws_route_table.jos1.id
+}
+resource "aws_route_table_association" "b" {
+  subnet_id      = aws_subnet.private.id
+  route_table_id = aws_route_table.jos1.id
+}
+resource "aws_internet_gateway" "gate" {
+  depends_on = [aws_vpc.joston]
+  vpc_id = aws_vpc.joston.id
+
+  tags = {
+    Name = "gate"
+  }
+}
+resource "aws_nat_gateway" "example" {
+  connectivity_type = "private"
+  subnet_id         = aws_subnet.private.id
+}
+resource "aws_route" "jos" {
+  route_table_id            = aws_route_table.jos1.id
+  destination_cidr_block    = "0.0.0.0/0"
+  gateway_id = aws_internet_gateway.gate.id
+}
+
+variable "sec" {
+type = list(number)
+default = [22,443,80,1234,3000,8080,9090]
+}
+
+resource "aws_security_group" "assign1" {
+   name = "assign1"
+   vpc_id = aws_vpc.joston.id
+   dynamic "ingress" {
+   for_each = var.sec
+     iterator = port
+    content{
+    from_port        = port.value
+    to_port          = port.value
+    protocol         = "tcp"
+    cidr_blocks      = ["0.0.0.0/0"]
+          }
+      }
+    egress{
+          from_port        = 0
+          to_port          = 0
+          protocol         = "-1"
+          cidr_blocks      = ["0.0.0.0/0"]
+}
+ tags = {
+    name = "assign1"
+    }
+}
+resource "aws_instance" "luv" {
+  subnet_id = aws_subnet.public.id
+  ami           =  "ami-0453ec754f44f9a4a"
+  instance_type = "t2.micro"
+  security_groups = [aws_security_group.assign1.id]
+ tags = {
+    name = "myec2"
+}
+}
+#############################################################################################################################################
