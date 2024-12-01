@@ -531,3 +531,129 @@ resource "aws_instance" "luv2" {
     Name = "myec2-1"
   }
 }
+####################################################################################################################################
+provider "aws" {
+  region     = "us-east-1"
+  access_key = ""
+  secret_key = ""
+}
+resource "aws_vpc" "joston_vpc" {
+  cidr_block = "10.0.0.0/16"
+  tags = {
+    Name = "joston_vpc"
+  }
+}
+
+resource "aws_subnet" "public_subnet" {
+  vpc_id = aws_vpc.joston_vpc.id
+  cidr_block = "10.0.1.0/24"
+  availability_zone = "us-east-1a"
+  map_public_ip_on_launch = true
+  tags ={
+    Name = "joston_public_subnet"
+  }
+}
+resource "aws_subnet" "private_subnet" {
+  vpc_id = aws_vpc.joston_vpc.id
+  cidr_block = "10.0.2.0/24"
+  availability_zone = "us-east-1a"
+   map_public_ip_on_launch = true
+  tags ={
+    Name = "joston_private_subnet"
+  }
+}
+resource "aws_internet_gateway" "joston_gateway" {
+  vpc_id = aws_vpc.joston_vpc.id
+  tags = {
+    Name = "joston_internet_gateway"
+  }
+}
+
+resource "aws_eip" "joston_eip" {
+  domain = "vpc"
+}
+
+resource "aws_nat_gateway" "joston_nat_gateway"{
+  allocation_id = aws_eip.joston_eip.id
+  subnet_id = aws_subnet.public_subnet.id
+  tags =  {
+   Name = "joston_nat_gateway"
+  }
+}
+resource "aws_route_table" "public_route"{
+  vpc_id = aws_vpc.joston_vpc.id
+  route {
+  gateway_id = aws_internet_gateway.joston_gateway.id
+  cidr_block = "0.0.0.0/0"
+  }
+  tags = {
+    Name = "joston_internet_gateway_connection"
+  }
+}
+resource "aws_route_table_association" "public_subnet_association" {
+  subnet_id      = aws_subnet.public_subnet.id
+  route_table_id = aws_route_table.public_route.id
+}
+resource "aws_route_table" "private_route" {
+  vpc_id = aws_vpc.joston_vpc.id
+  route{
+    cidr_block = "0.0.0.0/0"
+    nat_gateway_id = aws_nat_gateway.joston_nat_gateway.id
+    }
+    tags = {
+      Name = "joston_nat_gateway_connection"
+    }
+}
+resource "aws_route_table_association" "private_subnet_association" {
+  subnet_id = aws_subnet.private_subnet.id
+  route_table_id = aws_route_table.private_route.id
+}
+variable "sec" {
+type = list(number)
+default = [22,443,80,9000,8080,9090]
+}
+
+resource "aws_security_group" "joston_security"{
+   vpc_id = aws_vpc.joston_vpc.id
+   dynamic "ingress" {
+   for_each = var.sec
+     iterator = port
+    content{
+    from_port        = port.value
+    to_port          = port.value
+    protocol         = "tcp"
+    cidr_blocks      = ["0.0.0.0/0"]
+          }
+      }
+    egress{
+          from_port        = 0
+          to_port          = 0
+          protocol         = "-1"
+          cidr_blocks      = ["0.0.0.0/0"]
+}
+tags = {
+  Name = "joston_security"
+}
+}
+
+resource "aws_instance" "my_public_server" {
+  subnet_id = aws_subnet.public_subnet.id
+  ami                     = "ami-0453ec754f44f9a4a"
+  instance_type           = "t2.micro"
+  security_groups   = [aws_security_group.joston_security.id]
+  key_name = "jos"
+  tags= {
+    Name = "joston's_public_server"
+  }
+  }
+ resource "aws_instance" "my_private_server" {
+  subnet_id = aws_subnet.private_subnet.id
+  ami       = "ami-0453ec754f44f9a4a"
+  instance_type  = "t2.micro"
+  security_groups   = [aws_security_group.joston_security.id]
+  key_name = "jos"
+  tags = {
+    Name = "joston's_private_sever"
+  }
+ }
+##################################################################################################################
