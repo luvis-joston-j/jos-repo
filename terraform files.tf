@@ -655,5 +655,5 @@ resource "aws_instance" "my_public_server" {
   tags = {
     Name = "joston's_private_sever"
   }
- }
+ }https://github.com/sbathina/BankApp.git
 ##################################################################################################################
