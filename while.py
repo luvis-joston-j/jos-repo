@@ -74,3 +74,6 @@ while(w>0):
     if(w%2==0):
         print(w)
     w=w-1
+    vm_memory_total_used
+(vm_memory_total_max - vm_memory_total_used) / vm_memory_total_max * 100.0
+vm_cpu_load
