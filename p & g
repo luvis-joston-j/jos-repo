@@ -10,7 +10,7 @@ sudo tar -xvf prometheus-3.0.0.linux-amd64.tar.gz
 ===============================================================================================================
 cd prometheus-3.0.0.linux-amd64
 =================================================================================================
-sudo mv promotool /etc/prometheus
+sudo mv promtool /etc/prometheus
 sudo mv prometheus.yml /etc/prometheus
 sudo chown -R prometheus:prometheus /etc/prometheus
 sudo mv prometheus /usr/local/bin/
