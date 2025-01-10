@@ -30,22 +30,9 @@
   </p>
   <p style="margin-top: 30px;">
     <img src="https://img.shields.io/badge/-Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python" style="margin: 10px; box-shadow: 0px 4px 12px rgba(55, 118, 171, 0.6); transition: transform 0.2s ease-in-out;">
-    <img src="https://img.shields.io/badge/-Django-092E20?style=for-the-badge&logo=django&logoColor=white" alt="Django" style="margin: 10px; box-shadow: 0px 4px 12px rgba(9, 46, 32, 0.6); transition: transform 0.2s ease-in-out;">
-    <img src="https://img.shields.io/badge/-Django%20Rest%20Framework-black?style=for-the-badge&logo=django&logoColor=white" alt="Django Rest Framework" style="margin: 10px; box-shadow: 0px 4px 12px rgba(9, 46, 32, 0.6); transition: transform 0.2s ease-in-out;">
-    <img src="https://img.shields.io/badge/-REST%20API-FF4500?style=for-the-badge&logo=api&logoColor=white" alt="REST API" style="margin: 10px; box-shadow: 0px 4px 12px rgba(255, 69, 0, 0.6); transition: transform 0.2s ease-in-out;">
-    <img src="https://img.shields.io/badge/-JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript" style="margin: 10px; box-shadow: 0px 4px 12px rgba(247, 223, 30, 0.6); transition: transform 0.2s ease-in-out;">
     <img src="https://img.shields.io/badge/-SQLite-003B57?style=for-the-badge&logo=sqlite&logoColor=white" alt="SQLite" style="margin: 10px; box-shadow: 0px 4px 12px rgba(0, 59, 87, 0.6); transition: transform 0.2s ease-in-out;">
     <img src="https://img.shields.io/badge/-MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white" alt="MySQL" style="margin: 10px; box-shadow: 0px 4px 12px rgba(68, 121, 161, 0.6); transition: transform 0.2s ease-in-out;">
     <br><br>
-    <img src="https://img.shields.io/badge/-TensorFlow-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white" alt="TensorFlow" style="margin: 10px; box-shadow: 0px 4px 12px rgba(255, 111, 0, 0.6); transition: transform 0.2s ease-in-out;">
-    <img src="https://img.shields.io/badge/-Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white" alt="Flutter" style="margin: 10px; box-shadow: 0px 4px 12px rgba(2, 86, 155, 0.6); transition: transform 0.2s ease-in-out;">
-    <img src="https://img.shields.io/badge/-Dart-0175C2?style=for-the-badge&logo=dart&logoColor=white" alt="Dart" style="margin: 10px; box-shadow: 0px 4px 12px rgba(1, 117, 194, 0.6); transition: transform 0.2s ease-in-out;">
-  </p>
-  <p style="margin-top: 30px;">
-    <img src="https://img.shields.io/badge/Languages-Python%20%7C%20JavaScript%20%7C%20C%2B%2B%20%7C%20Java%20%7C%20HTML%20%7C%20CSS%20%7C%20Dart-4682B4?style=for-the-badge" alt="Languages" style="margin: 10px;">
-    <br><br>
-    <img src="https://img.shields.io/badge/Frameworks%20%26%20Libraries-Django%20%7C%20DRF%20%7C%20REST%20API%20%7C%20Bootstrap%20%7C%20TensorFlow%20%7C%20Flutter%20%7C%20Dart-006400?style=for-the-badge" alt="Frameworks & Libraries" style="margin: 10px;">
-  </p>
  <div align="">
     <img src="https://cultofthepartyparrot.com/parrots/hd/githubparrot.gif" width="25" height="25"/>
     <img src="https://cultofthepartyparrot.com/flags/hd/iranparrot.gif" width="25" height="25"/>
