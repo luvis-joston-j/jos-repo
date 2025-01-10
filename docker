@@ -43,3 +43,4 @@ docker build -t <image name> .
 docker inspect <container-name>
 docker inspect <container-name> | grep -i author
 docker system prune -a
+ docker service  create --name svc --replicas 8 -p 1234:8080 luvisjostonj/tom
