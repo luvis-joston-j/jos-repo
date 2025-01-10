@@ -40,4 +40,6 @@ docker service ps mysvc
 docker service ls
 docker service create --name mysvc --replicas 6 nginx
 docker build -t <image name> .
-
+docker inspect <container-name>
+docker inspect <container-name> | grep -i author
+docker system prune -a
