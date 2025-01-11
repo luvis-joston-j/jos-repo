@@ -49,3 +49,5 @@ docker node ls
 docker service ls
 docker service ps mysvc
 docker service rm mysvc
+docker volume help
+docker volume ls
