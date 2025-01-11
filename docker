@@ -51,3 +51,4 @@ docker service ps mysvc
 docker service rm mysvc
 docker volume help
 docker volume ls
+docker run -it --name con2 --volumes-from conq --privileged=true ubuntu
