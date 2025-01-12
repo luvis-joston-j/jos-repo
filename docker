@@ -59,3 +59,10 @@ mkdir -p /tmp
 docker run -d -p 80:80 -v /tmp:/usr/share/nginx/html nginx
 docker-compose up
 docker-compose -f <filename> up
+docker-compose up -d
+docker-compose ps
+docker-compose images
+docker logs -f <con-name>
+docker-compose down
+docker-compose scale doc:v1=10
+docker-compose top
