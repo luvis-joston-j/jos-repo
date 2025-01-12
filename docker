@@ -52,3 +52,10 @@ docker service rm mysvc
 docker volume help
 docker volume ls
 docker run -it --name con2 --volumes-from conq --privileged=true ubuntu
+docker volume inspect <volume-name>
+docker run -it --name --mount source=<volume-name>,destination=</path/volume> <image name> 
+docker attach con1
+mkdir -p /tmp
+docker run -d -p 80:80 -v /tmp:/usr/share/nginx/html nginx
+docker-compose up
+docker-compose -f <filename> up
