@@ -1,3 +1,9 @@
+curl -SL https://github.com/docker/compose/releases/download/v2.13.0/docker-compose-linux-x86_64 -o /usr/local/bin/docker-compose
+
+sudo chmod +x /usr/local/bin/docker-compose
+
+docker-compose --version
+=============================================================================================================
 version: '3'
 
 services:
@@ -21,4 +27,20 @@ services:
    WORDPRESS_DB_USER: wordpress
    WORDPRESS_DB_PASSWORD: wordpress
    WORDPRESS_DB_NAME: wordpress
+ =========================================================================================================
+   version : '3'
+services:
+  movie:
+    image : net:latest
+    ports:
+      - '91:80'
+  series:
+    image : series:v1
+    ports:
+      - '92:80'
+  doc:
+    image : doc:v1
+    ports:
+      - '93:80'
+  ======================================================================================================================
 
