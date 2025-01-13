@@ -1,0 +1,45 @@
+1. What is Amazon EC2, and how do you manage instances in a DevOps pipeline?
+Answer: Amazon EC2 (Elastic Compute Cloud) provides scalable compute capacity in the cloud. In a DevOps pipeline, EC2 instances can be used to deploy applications, run tests, or host microservices. You can automate instance management using tools like AWS CloudFormation, AWS Systems Manager, or AWS Elastic Beanstalk, depending on the application architecture.
+2. Explain the concept of Infrastructure as Code (IaC) in AWS. Which AWS services can be used for IaC?
+Answer: Infrastructure as Code (IaC) is the practice of managing and provisioning computing infrastructure through machine-readable definition files rather than through physical hardware configuration or interactive configuration tools. In AWS, IaC can be implemented using services such as:
+AWS CloudFormation – for creating and managing a collection of related AWS resources, provisioning them in an orderly and predictable fashion.
+AWS CDK (Cloud Development Kit) – a higher-level, programmatic approach for defining cloud infrastructure using familiar programming languages.
+Terraform – although not an AWS native service, it can be used to manage AWS infrastructure as code.
+3. What are AWS Lambda functions, and how would you use them in a DevOps environment?
+Answer: AWS Lambda is a serverless compute service that runs code in response to events and automatically manages the underlying compute resources. In a DevOps environment, Lambda can be used for automation tasks such as triggering deployments, post-deployment validation, or integrating third-party tools. Lambda can be integrated with other AWS services such as S3, CloudWatch, and API Gateway to create serverless workflows in the CI/CD pipeline.
+4. What is Amazon S3, and how would you use it in a DevOps pipeline for storing artifacts or backups?
+Answer: Amazon S3 (Simple Storage Service) is an object storage service designed to store and retrieve any amount of data from anywhere on the web. In a DevOps pipeline, you can use S3 to store build artifacts, deployment packages, or backups. You can automate the upload and retrieval of artifacts using AWS CLI, SDKs, or services like AWS CodePipeline and AWS CodeBuild.
+5. How does AWS CodePipeline integrate with the DevOps process, and what are its main components?
+Answer: AWS CodePipeline is a continuous integration and continuous delivery (CI/CD) service that automates the build, test, and deployment phases of your release pipeline. It integrates with various AWS services (e.g., CodeBuild, CodeDeploy, Lambda) and third-party tools. Main components of CodePipeline:
+Source stage: Pulls code from repositories like AWS CodeCommit or GitHub.
+Build stage: Uses AWS CodeBuild or custom build scripts to compile the code.
+Test stage: Automated tests are executed using tools like AWS Device Farm or third-party test frameworks.
+Deploy stage: Code is deployed using AWS services like CodeDeploy or CloudFormation.
+6. What is AWS CloudWatch, and how can it be used to monitor AWS resources in a DevOps environment?
+Answer: AWS CloudWatch is a monitoring and observability service that provides data and insights into AWS resources and applications. In a DevOps environment, CloudWatch can be used to:
+Monitor EC2 instances, Lambda functions, and other resources.
+Set up alarms for resource usage, application performance, and error thresholds.
+Aggregate logs from CloudTrail, EC2, and other services for central log analysis.
+Create dashboards for real-time metrics visualization.
+7. What are the different types of load balancers in AWS, and how do you choose between them in a DevOps context?
+Answer: AWS offers three main types of load balancers:
+Classic Load Balancer (ELB) – The original AWS load balancer, mostly used for simple web applications.
+Application Load Balancer (ALB) – Best suited for HTTP and HTTPS traffic with routing capabilities based on content (e.g., URL path or hostname). Ideal for microservices and container-based applications.
+Network Load Balancer (NLB) – Designed for high-performance, low-latency, and TCP/UDP traffic. It's best for applications that require extreme performance.
+Choosing the load balancer depends on the application architecture: for microservices, you might opt for ALB; for high-performance systems, NLB may be ideal.
+8. How do you implement security in a DevOps pipeline using AWS?
+Answer: Implementing security in a DevOps pipeline on AWS involves:
+IAM (Identity and Access Management): Ensure fine-grained permissions for users, groups, and services.
+AWS Secrets Manager / Parameter Store: Securely store sensitive information (e.g., database credentials, API keys).
+Security Hub & GuardDuty: Use for continuous monitoring and security auditing of your AWS environment.
+VPC (Virtual Private Cloud): Isolate and secure resources by controlling traffic flow between services.
+CodePipeline with security gates: Integrate security checks and static code analysis during the build and deployment process.
+Encryption: Use AWS KMS (Key Management Service) to encrypt data at rest and in transit.
+9. What is the role of AWS Elastic Beanstalk in the DevOps process?
+Answer: AWS Elastic Beanstalk is a Platform-as-a-Service (PaaS) that simplifies the deployment and management of applications. In a DevOps pipeline, it can automate the environment provisioning and deployment process, handling the infrastructure for you while you focus on the application code. Elastic Beanstalk supports multiple languages, such as Java, Node.js, Python, Ruby, etc., and integrates easily with other AWS services like RDS, S3, and CloudWatch.
+10. How would you scale an application in AWS using Auto Scaling?
+Answer: AWS Auto Scaling adjusts the number of EC2 instances in a group based on the application's needs, ensuring optimal performance and cost efficiency. You define scaling policies based on metrics such as CPU utilization or network traffic. Auto Scaling includes:
+Auto Scaling Groups to manage a collection of EC2 instances.
+Scaling policies that define when to scale in or scale out.
+Health checks to ensure only healthy instances serve traffic.
+Load balancers to distribute traffic evenly across instances.
