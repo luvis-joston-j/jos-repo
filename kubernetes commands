@@ -29,6 +29,13 @@ kubectl set image deployment jos c2=v1
 kubectl rollout undo deployment jos
 while true;do curl http://54.158.16.47:32672/;sleep 1;echo " ";done
 kubectl top pods
+kubectl version --client
+==============================================================================================
+kubernetes.io/docs cheatssheets
+kubernetes.io/blogs
+============================================================================================
+kubectl config get-context
+kubectl use-context <cluster name>
 
 
 
